@@ -1,10 +1,6 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
-/* Мне очень стыдно за эту кашу */
-
 .page {
   font-family: var(--main-font);
-  background: var(--image-dark);
+  background: var(--image-background);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -13,7 +9,7 @@
 
 .header {
   display: grid;
-  min-height: 768px;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -67,7 +63,6 @@
 .header__theme-menu {
   margin-top: 20px;
   display: flex;
-  height: 26px;
   justify-content: center;
 }
 
@@ -84,7 +79,7 @@
 .header__theme-menu-button {
   color: var(--button-color);
   background-color: inherit;
-  height: 26px;
+  min-height: 26px;
   width: 70px;
   border: transparent;
   background: none;
@@ -98,11 +93,11 @@
 
 .header__theme-menu-button_active {
   outline: 1px solid var(--button-color);
-  cursor: pointer;
+  pointer-events: none;
 }
 
 .header__theme-menu-button:hover {
-  outline: 1px solid var(--button-color);
+  outline: 1px solid var(--hover-color);
 }
 
 .header__theme-menu-button:focus {
@@ -118,13 +113,13 @@
   width: 490px;
 }
 
-.header__nofocus {
+.header__main-title {
   font-family: var(--main-font);
   font-size: 157px;
   font-weight: var(--weight-bold);
   line-height: 129.53px;
   color: var(--focus-color);
-  text-shadow: 4px 4px #FF0070;
+  text-shadow: 4px 4px 0 var(--shadow-color);
   grid-column: 2 / span 2;
   grid-row: 2;
   margin-left: -20px;
@@ -185,22 +180,24 @@
 .main__link {
   text-decoration: none;
   color: var(--text-color);
-  text-shadow: 2px 2px var(--accent-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.main__content-block {
+.main__first-block,
+.main__second-block,
+.main__third-block {
   display: grid;
   gap: 20px;
 }
 
-.main__content-block:first-of-type,
-.main__content-block:nth-of-type(3) {
+.main__first-block,
+.main__third-block {
   display: grid;
   grid-template-columns: 30% 70%;
   gap: 39px;
 }
 
-.main__content-block:nth-of-type(2) .article-block {
+.main__second-block .article-block {
   display: grid;
   grid-template-columns: repeat(3, 32%);
   justify-content: space-between;
@@ -208,11 +205,11 @@
   gap: 20px;
 }
 
-.main__content-block:nth-of-type(2) .article {
+.main__second-block .article {
   width: 100%;
 }
 
-.main__content-block:nth-of-type(3) .article {
+.main__third-block .article {
   gap: 10px;
 }
 
@@ -247,7 +244,6 @@
 }
 
 .main__img-section .main__subtitle {
-  height: 23px;
   width: 100%;
   grid-column: 1 / -1;
 }
@@ -292,19 +288,21 @@
 } 
 
 .footer {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  min-height: 668px;
 }
 
-.footer__focus {
+.footer__title {
   font-family: var(--main-font);
   font-size: 157px;
   font-weight: var(--weight-bold);
   line-height: 129.53px;
   color: var(--focus-color);
-  text-shadow: 4px 4px var(--accent-color);
+  text-shadow: 2px 2px 0 var(--accent-color);
 }
 
 /* Планшет */
@@ -329,9 +327,9 @@
     flex-direction: column;
   }
 
-  .header__nofocus {
+  .header__main-title {
     font-family: var(--main-font);
-    font-size: 120px;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     font-weight: var(--weight-bold);
     line-height: 99px;
   }
@@ -344,17 +342,19 @@
     width: 236px;
   }
 
-  .main__content-block {
+  .main__first-block,
+  .main__second-block,
+  .main__third-block {
     margin-right: 15px;
   }
 
-  .main__content-block:nth-of-type(2) .article-block {
+  .main__second-block .article-block {
     display: flex;
     flex-direction: column;
     width: 728px;
   }
 
-  .footer__focus {
+  .footer__title {
     font-family: var(--main-font);
     font-size: 120px;
     font-weight: var(--weight-bold);
@@ -369,9 +369,9 @@
     min-height: 668px;
   }
 
-  .header__nofocus {
+  .header__main-title {
     font-family: var(--main-font);
-    font-size: 116px;
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
     font-weight: var(--weight-bold);
     line-height: 95.7px;
     margin-left: 0;
@@ -403,7 +403,7 @@
   }
 
   .header__container {
-    margin-top: 70px;
+    margin-top: 0px;
     gap: 50px;
     margin-left: 10px;
   }
@@ -417,8 +417,10 @@
     gap: 50px;
   }
 
-  .main__content-block  {
-    display: block !important; /*Пришлось использовать, т.к. не мог переназначить. Как пофиксить тоже не нашёл*/
+  .main__first-block,
+  .main__second-block,
+  .main__third-block {
+    display: block;
   }
 
   .main__title {
@@ -431,7 +433,7 @@
     min-width: 355px;
   }
 
-  .main__content-block:nth-of-type(2) .article-block {
+  .main__second-block .article-block {
     grid-template-columns: none;
   }
 
@@ -445,7 +447,7 @@
     width: 355px;
   }
 
-  .footer__focus {
+  .footer__title {
     font-family: var(--main-font);
     font-size: 116px;
     font-weight: var(--weight-bold);
