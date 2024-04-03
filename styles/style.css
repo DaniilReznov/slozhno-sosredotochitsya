@@ -228,7 +228,7 @@
 }
 
 .main__link:hover {
-  border-bottom: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--text-color);
 }
 
 .main__link:focus {
