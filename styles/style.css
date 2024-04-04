@@ -123,7 +123,6 @@
   grid-column: 2 / span 2;
   grid-row: 2;
   margin-left: -20px;
-  overflow-y: hidden;
 }
 
 .header__title {
@@ -149,7 +148,6 @@
   flex-direction: column;
   gap: 80px;
   margin: 59px 20px;
-  overflow-x: hidden;
 }
 
 .main__title {
@@ -195,7 +193,7 @@
 .main__hard-to-concentrate,
 .main__five-tips {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 30% auto;
   gap: 39px;
 }
 
@@ -223,7 +221,6 @@
 .article {
   display: grid;
   gap: 10px;
-  width: 95%;
   align-self: start;
 }
 
@@ -309,7 +306,6 @@
   line-height: 129.53px;
   color: var(--focus-color);
   text-shadow: 2px 2px 0 var(--accent-color);
-  overflow-y: hidden;
 }
 
 /* Планшет */
@@ -352,12 +348,6 @@
 
   .main__title {
     width: 236px;
-  }
-
-  .main__hard-to-concentrate,
-  .main__concentration-of-attention,
-  .main__five-tips {
-    margin-right: 15px;
   }
 
   .main__concentration-of-attention .article-block {
